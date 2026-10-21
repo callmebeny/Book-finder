@@ -17,6 +17,14 @@ button {
   border: none;
 }
 
+#filter {
+  margin-top: 10px;
+}
+
+#filter input {
+  width: 30%;
+}
+
 #results p {
   background-color: #f4f4f4;
   padding: 10px;
