@@ -19,7 +19,13 @@ function showBooks() {
     if (book.cover_i) {
       cover = "<img src='https://covers.openlibrary.org/b/id/" + book.cover_i + "-M.jpg' alt=''>";
     }
-    results.innerHTML += "<p>" + cover + "<span>" + book.title + " (" + (book.first_publish_year || "?") + ")</span></p>";
+    let author = book.author_name ? book.author_name.join(", ") : "Unknown author";
+    let published = book.first_publish_year || "Unknown year";
+    results.innerHTML += "<p>" + cover + "<span>" +
+      "<span class='title'>" + book.title + "</span>" +
+      "<span class='author'>by " + author + "</span>" +
+      "<span class='year'>Published " + published + "</span>" +
+      "</span></p>";
   }
 }
 
