@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+input {
+  width: 70%;
+  padding: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #2e6b4f;
+  color: white;
+  border: none;
+}
+
+#results p {
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  input, button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
