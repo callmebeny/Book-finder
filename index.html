@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Book Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,15 +14,19 @@
 
   <form id="form">
     <label for="search">Book title or author:</label>
-    <input type="text" id="search" placeholder="e.g. Harry Potter" required>
-    <button type="submit">Search</button>
+    <div class="row">
+      <input type="text" id="search" placeholder="e.g. Harry Potter" required>
+      <select id="year">
+        <option value="">All years</option>
+        <option value="2020">After 2020</option>
+        <option value="2010">After 2010</option>
+        <option value="2000">After 2000</option>
+        <option value="1990">After 1990</option>
+        <option value="1950">After 1950</option>
+      </select>
+      <button type="submit">Search</button>
+    </div>
   </form>
-
-  <div id="filter">
-    <label for="year">Published after:</label>
-    <input type="number" id="year" placeholder="e.g. 2000">
-    <button type="button" id="filterButton">Filter</button>
-  </div>
 
   <div id="results"></div>
 

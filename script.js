@@ -1,11 +1,25 @@
 let form = document.getElementById("form");
 let results = document.getElementById("results");
+let yearSelect = document.getElementById("year");
 let books = [];
 
-function showBooks(list) {
+function showBooks() {
+  let year = yearSelect.value;
+  let list = books;
+
+  if (year !== "") {
+    list = books.filter(function (book) {
+      return book.first_publish_year >= year;
+    });
+  }
+
   results.innerHTML = "";
   for (let book of list) {
-    results.innerHTML += "<p>" + book.title + " (" + (book.first_publish_year || "?") + ")</p>";
+    let cover = "";
+    if (book.cover_i) {
+      cover = "<img src='https://covers.openlibrary.org/b/id/" + book.cover_i + "-M.jpg' alt=''>";
+    }
+    results.innerHTML += "<p>" + cover + "<span>" + book.title + " (" + (book.first_publish_year || "?") + ")</span></p>";
   }
 }
 
@@ -20,20 +34,8 @@ form.addEventListener("submit", function (event) {
     })
     .then(function (data) {
       books = data.docs;
-      showBooks(books);
+      showBooks();
     });
 });
 
-document.getElementById("filterButton").addEventListener("click", function () {
-  let year = document.getElementById("year").value;
-
-  if (year === "") {
-    showBooks(books);
-    return;
-  }
-
-  let filtered = books.filter(function (book) {
-    return book.first_publish_year >= year;
-  });
-  showBooks(filtered);
-});
+yearSelect.addEventListener("change", showBooks);
