@@ -7,7 +7,7 @@ let books = [];
 
 // Shows a grey text message in the results area
 function showMessage(text) {
-  results.innerHTML = "<div class='message'>" + text + "</div>";
+  results.innerHTML = backButton() + "<div class='message'>" + text + "</div>"; // backButton is in lists.js
 }
 
 // Shows the books on the page
@@ -19,7 +19,13 @@ function showBooks() {
     return;
   }
 
-  results.innerHTML = "<div class='message'>Found " + list.length + " books</div>";
+  // The line above the cards: "Found 10 books" or "Your reading list: 3 books"
+  let title = "Found " + list.length + " books";
+  if (currentList !== "") {
+    title = "Your " + listNames[currentList] + ": " + list.length + " books";
+  }
+
+  results.innerHTML = backButton() + "<div class='message'>" + title + "</div>";
   for (let book of list) {
     results.innerHTML += makeCard(book);
   }
@@ -59,11 +65,11 @@ function makeCard(book) {
     listButton("readlist", book) +
     "</span>";
 
-  return "<p>" + cover + "<span>" +
+  return "<div class='card'>" + cover + "<span>" +
     "<a class='title' href='" + link + "' target='_blank'>" + book.title + "</a>" +
     "<span class='author'>by " + author + "</span>" +
     "<span class='subjects-line'>" + subjects + "</span>" +
     tags +
     buttons +
-    "</span></p>";
+    "</span></div>";
 }

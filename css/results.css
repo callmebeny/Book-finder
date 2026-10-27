@@ -1,11 +1,12 @@
 /* The book cards and messages under the search box */
 
 /* One book card */
-#results p {
+#results .card {
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 16px;
+  margin: 14px 0; /* space between the cards */
   background-color: var(--card);
   border-radius: 14px;
   border-left: 5px solid var(--green);
@@ -13,7 +14,7 @@
   animation: fadeIn 0.4s;
 }
 
-#results p:hover {
+#results .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
@@ -73,6 +74,12 @@
   color: var(--green);
   background-color: var(--green-light);
   border-radius: 999px;
+}
+
+/* The "Back to search results" button above a list */
+#results .back {
+  font-size: 15px;
+  padding: 8px 16px;
 }
 
 /* "Searching...", "No books found", "Found 10 books" */

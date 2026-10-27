@@ -6,6 +6,7 @@ let clearButton = document.getElementById("clear");
 
 // Asks Open Library for books and then shows them
 function searchBooks(query) {
+  currentList = ""; // a new search closes any open list (see lists.js)
   showMessage("Searching...");
 
   // "fields" = the info we want about each book (we use all of these in display.js)
@@ -17,6 +18,7 @@ function searchBooks(query) {
     })
     .then(function (data) {
       books = data.docs;
+      searchResults = data.docs; // remembered for the "Back" button
       showBooks(); // from display.js
     })
     .catch(function () {
@@ -29,6 +31,7 @@ function searchSubject(subject) {
   searchInput.value = subject; // so the user sees what was searched
   searchBooks("subject:" + subject);
 }
+
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   searchBooks(searchInput.value);
@@ -37,6 +40,8 @@ form.addEventListener("submit", function (event) {
 clearButton.addEventListener("click", function () {
   searchInput.value = "";
   books = [];
+  searchResults = [];
+  currentList = "";
   results.innerHTML = "";
   searchInput.focus();
 });

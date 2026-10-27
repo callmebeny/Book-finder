@@ -61,12 +61,40 @@ function toggleInList(listName, key, button) {
   button.outerHTML = listButton(listName, book); // redraw the button with the new text
 }
 
+// Which list is open right now: "" = none (we are looking at search results)
+let currentList = "";
+
+// The books from the last search, so "Back" can show them again (filled in by search.js)
+let searchResults = [];
+
 // Called by the "My favourites" / "My reading list" buttons in index.html
 function showList(listName) {
-  if (lists[listName].length === 0) {
+  currentList = listName;
+  books = lists[listName].slice(); // copy, so the year filter and sort work here too
+
+  if (books.length === 0) {
     showMessage("Your " + listNames[listName] + " is empty. Add a book from the search results.");
     return;
   }
-  books = lists[listName].slice(); // copy, so the year filter and sort work here too
+  showBooks();
+}
+
+// The "Back" button is only shown when a list is open
+function backButton() {
+  if (currentList === "") {
+    return "";
+  }
+  return "<button type='button' class='back' onclick='goBack()'>Back to search results</button>";
+}
+
+// Called by the "Back" button: shows the last search results again
+function goBack() {
+  currentList = "";
+  books = searchResults;
+
+  if (books.length === 0) {
+    results.innerHTML = "";
+    return;
+  }
   showBooks();
 }
