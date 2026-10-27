@@ -182,6 +182,19 @@ button:focus-visible {
 #results .title {
   display: block;
   font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+#results .title:hover {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+.message {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
 }
 
 #results .author {
