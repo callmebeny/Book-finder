@@ -179,6 +179,43 @@ button:focus-visible {
   transition: transform 0.25s;
 }
 
+#results .title {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+#results .title:hover {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+.message {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+}
+
+#results .author {
+  display: block;
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+#results .year {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  background-color: var(--green-light);
+  border-radius: 999px;
+}
+
 #results p:hover img {
   transform: scale(1.08) rotate(-2deg);
 }
