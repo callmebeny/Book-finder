@@ -1,8 +1,8 @@
-/* Everything inside the white search box */
+/* Everything inside the search box */
 
-/* The white search box */
+/* The search box */
 form {
-  background-color: white;
+  background-color: var(--card);
   padding: 26px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -31,6 +31,8 @@ input, select, button {
 
 input, select {
   border: 2px solid #e5e7eb;
+  color: var(--text);
+  background-color: var(--card);
 }
 
 input {
@@ -54,10 +56,10 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* The grey "Clear" button */
+/* The light "Clear" button */
 .clear {
-  color: var(--text);
-  background-color: #e5e7eb;
+  color: var(--green);
+  background-color: var(--green-light);
 }
 
 /* The subject buttons: small and light green */

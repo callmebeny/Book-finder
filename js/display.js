@@ -35,19 +35,35 @@ function makeCard(book) {
   let published = book.first_publish_year || "Unknown year";
   let link = "https://openlibrary.org" + book.key;
 
-  let pages = "";
+  // Small green tags under the author (only if the info exists)
+  let tags = "<span class='tag'>Published " + published + "</span>";
   if (book.number_of_pages_median) {
-    pages = "<span class='tag'>" + book.number_of_pages_median + " pages</span>";
+    tags += "<span class='tag'>" + book.number_of_pages_median + " pages</span>";
+  }
+  if (book.edition_count) {
+    tags += "<span class='tag'>" + book.edition_count + " editions</span>";
+  }
+  if (book.ratings_average) {
+    tags += "<span class='tag'>⭐ " + book.ratings_average.toFixed(1) + "</span>";
   }
 
-  // Heart button: full if the book is a favourite (see favourites.js)
-  let heart = isFavourite(book.key) ? "❤️" : "🤍";
-  let heartButton = "<button class='fav' onclick=\"toggleFavourite('" + book.key + "', this)\">" + heart + "</button>";
+  // The first 4 subjects of the book
+  let subjects = "No subjects listed";
+  if (book.subject) {
+    subjects = book.subject.slice(0, 4).join(", ");
+  }
+
+  // The two list buttons under the tags (see lists.js)
+  let buttons = "<span class='card-buttons'>" +
+    listButton("favourites", book) +
+    listButton("readlist", book) +
+    "</span>";
 
   return "<p>" + cover + "<span>" +
     "<a class='title' href='" + link + "' target='_blank'>" + book.title + "</a>" +
     "<span class='author'>by " + author + "</span>" +
-    "<span class='tag'>Published " + published + "</span>" +
-    pages +
-    "</span>" + heartButton + "</p>";
+    "<span class='subjects-line'>" + subjects + "</span>" +
+    tags +
+    buttons +
+    "</span></p>";
 }

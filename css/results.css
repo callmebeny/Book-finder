@@ -6,7 +6,7 @@
   align-items: center;
   gap: 20px;
   padding: 16px;
-  background-color: white;
+  background-color: var(--card);
   border-radius: 14px;
   border-left: 5px solid var(--green);
   transition: transform 0.2s;
@@ -54,6 +54,15 @@
   color: var(--grey);
 }
 
+/* The subjects line: "Fantasy, Adventure, Dragons" */
+#results .subjects-line {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--grey);
+}
+
 /* Small green labels: "Published 1997", "300 pages" */
 #results .tag {
   display: inline-block;
@@ -85,10 +94,25 @@
   }
 }
 
-/* The heart button on the right of each card */
-#results .fav {
-  margin-left: auto; /* pushes it to the right side */
-  font-size: 26px;
-  padding: 6px;
+/* The two buttons at the bottom of each card */
+#results .card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* "Add to ..." = outlined button */
+#results .list-button {
+  font-size: 14px;
+  padding: 6px 14px;
+  color: var(--green);
   background-color: transparent;
+  border: 2px solid var(--green);
+}
+
+/* "Remove from ..." = filled green button */
+#results .list-button.added {
+  color: white;
+  background-color: var(--green);
 }

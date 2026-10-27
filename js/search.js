@@ -8,7 +8,10 @@ let clearButton = document.getElementById("clear");
 function searchBooks(query) {
   showMessage("Searching...");
 
-  fetch("https://openlibrary.org/search.json?q=" + encodeURIComponent(query) + "&limit=10")
+  // "fields" = the info we want about each book (we use all of these in display.js)
+  let fields = "key,title,author_name,first_publish_year,cover_i,number_of_pages_median,subject,edition_count,ratings_average";
+
+  fetch("https://openlibrary.org/search.json?q=" + encodeURIComponent(query) + "&limit=10&fields=" + fields)
     .then(function (response) {
       return response.json();
     })
@@ -23,10 +26,9 @@ function searchBooks(query) {
 
 // Called by the subject buttons in index.html
 function searchSubject(subject) {
-  searchInput.value = "";
+  searchInput.value = subject; // so the user sees what was searched
   searchBooks("subject:" + subject);
 }
-
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   searchBooks(searchInput.value);

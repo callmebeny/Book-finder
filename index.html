@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/results.css">
 </head>
 <body>
+  <button type="button" id="theme" class="theme">🌙 Dark mode</button>
   <h1>Book Finder</h1>
 
   <form id="form">
@@ -48,7 +49,13 @@
       <button type="button" class="subject" onclick="searchSubject('science')">Science</button>
       <button type="button" class="subject" onclick="searchSubject('romance')">Romance</button>
       <button type="button" class="subject" onclick="searchSubject('mystery')">Mystery</button>
-      <button type="button" class="subject" onclick="showFavourites()">❤️ My favourites</button>
+    </div>
+
+    <!-- The saved lists (see lists.js) -->
+    <label>Your lists:</label>
+    <div class="subjects">
+      <button type="button" class="subject" onclick="showList('favourites')">My favourites</button>
+      <button type="button" class="subject" onclick="showList('readlist')">My reading list</button>
     </div>
   </form>
 
@@ -56,8 +63,9 @@
 
   <!-- display.js first, because the others use its functions -->
   <script src="js/display.js"></script>
-  <script src="js/favourites.js"></script>
+  <script src="js/lists.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/search.js"></script>
+  <script src="js/theme.js"></script>
 </body>
 </html>
