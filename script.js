@@ -22,7 +22,7 @@ function showBooks() {
     return;
   }
 
-  results.innerHTML = "";
+  results.innerHTML = "<div class='message'>Found " + list.length + " books</div>";
   for (let book of list) {
     let cover = "";
     if (book.cover_i) {
