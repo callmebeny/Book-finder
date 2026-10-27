@@ -1,0 +1,88 @@
+/* Everything inside the white search box */
+
+/* The white search box */
+form {
+  background-color: white;
+  padding: 26px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--grey);
+}
+
+/* Puts the input, dropdown and button next to each other */
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input, select, button {
+  font-family: inherit;
+  font-size: 17px;
+  padding: 14px 16px;
+  border-radius: 10px;
+}
+
+input, select {
+  border: 2px solid #e5e7eb;
+}
+
+input {
+  flex: 1; /* the input takes all the free space */
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+button {
+  font-weight: 600;
+  color: white;
+  background-color: var(--green);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* The grey "Clear" button */
+.clear {
+  color: var(--text);
+  background-color: #e5e7eb;
+}
+
+/* The subject buttons: small and light green */
+.subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.subject {
+  font-size: 15px;
+  padding: 8px 16px;
+  color: var(--green);
+  background-color: var(--green-light);
+  border-radius: 999px;
+}
+
+.subject:hover {
+  color: white;
+  background-color: var(--green);
+}
+
+/* On phones, stack the search row */
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}

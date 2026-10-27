@@ -7,15 +7,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/results.css">
 </head>
 <body>
   <h1>Book Finder</h1>
 
   <form id="form">
+    <!-- Search box + buttons -->
     <label for="search">Book title or author:</label>
     <div class="row">
       <input type="text" id="search" placeholder="e.g. Harry Potter" required autofocus>
+      <button type="submit">Search</button>
+      <button type="button" id="clear" class="clear">Clear</button>
+    </div>
+
+    <!-- Filter and sort -->
+    <div class="row">
       <select id="year">
         <option value="">All years</option>
         <option value="2020">After 2020</option>
@@ -24,12 +33,31 @@
         <option value="1990">After 1990</option>
         <option value="1950">After 1950</option>
       </select>
-      <button type="submit">Search</button>
+      <select id="sort">
+        <option value="">Default order</option>
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+      </select>
+    </div>
+
+    <!-- Subject buttons: to add one, copy a line and change the word -->
+    <label>Or browse a subject:</label>
+    <div class="subjects">
+      <button type="button" class="subject" onclick="searchSubject('fantasy')">Fantasy</button>
+      <button type="button" class="subject" onclick="searchSubject('history')">History</button>
+      <button type="button" class="subject" onclick="searchSubject('science')">Science</button>
+      <button type="button" class="subject" onclick="searchSubject('romance')">Romance</button>
+      <button type="button" class="subject" onclick="searchSubject('mystery')">Mystery</button>
+      <button type="button" class="subject" onclick="showFavourites()">❤️ My favourites</button>
     </div>
   </form>
 
   <div id="results"></div>
 
-  <script src="script.js"></script>
+  <!-- display.js first, because the others use its functions -->
+  <script src="js/display.js"></script>
+  <script src="js/favourites.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/search.js"></script>
 </body>
 </html>
