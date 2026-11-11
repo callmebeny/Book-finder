@@ -1,0 +1,125 @@
+/* The book cards and messages under the search box */
+
+/* One book card */
+#results .card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  margin: 14px 0; /* space between the cards */
+  background-color: var(--card);
+  border-radius: 14px;
+  border-left: 5px solid var(--green);
+  transition: transform 0.2s;
+  animation: fadeIn 0.4s;
+}
+
+#results .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+#results img {
+  width: 80px;
+  border-radius: 6px;
+}
+
+/* Shown when a book has no cover picture */
+.no-cover {
+  width: 80px;
+  height: 120px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  background-color: var(--green-light);
+  border-radius: 6px;
+}
+
+#results .title {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+#results .title:hover {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+#results .author {
+  display: block;
+  font-size: 16px;
+  color: var(--grey);
+}
+
+/* The subjects line: "Fantasy, Adventure, Dragons" */
+#results .subjects-line {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--grey);
+}
+
+/* Small green labels: "Published 1997", "300 pages" */
+#results .tag {
+  display: inline-block;
+  margin-top: 8px;
+  margin-right: 6px;
+  padding: 3px 10px;
+  font-size: 13px;
+  color: var(--green);
+  background-color: var(--green-light);
+  border-radius: 999px;
+}
+
+/* The "Back to search results" button above a list */
+#results .back {
+  font-size: 15px;
+  padding: 8px 16px;
+}
+
+/* "Searching...", "No books found", "Found 10 books" */
+.message {
+  text-align: center;
+  color: var(--grey);
+  padding: 20px;
+}
+
+/* Cards slide up a little when they appear */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The two buttons at the bottom of each card */
+#results .card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* "Add to ..." = outlined button */
+#results .list-button {
+  font-size: 14px;
+  padding: 6px 14px;
+  color: var(--green);
+  background-color: transparent;
+  border: 2px solid var(--green);
+}
+
+/* "Remove from ..." = filled green button */
+#results .list-button.added {
+  color: white;
+  background-color: var(--green);
+}
